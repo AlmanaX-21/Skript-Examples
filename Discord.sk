@@ -1,0 +1,46 @@
+#   -----------------------------------------------------   #
+#
+#   A /discord COMMAND FOR YOU SIMPLETONS OUT THERE
+#
+#   -----------------------------------------------------   #
+
+#   -----------------------------------------------------   #
+#
+#   NO ADDONS REQURES, CAN CHANGE LINK IN GAME
+#
+#   -----------------------------------------------------   #
+
+#   -----------------------------------------------------   #
+#
+#   SETTING A BASE LINK, THE SKUNITY DISCORD LINK
+#
+#   -----------------------------------------------------   #
+
+on load:
+    if {dlink} is not set:
+        set {dlink} to "https://discord.gg/Bztj65Ub"
+
+#   -----------------------------------------------------   #
+#
+#   THE SIMPLE MESSAGE SENDING COMMAND, CLICKABLE LINK
+#
+#   -----------------------------------------------------   #
+
+command discord:
+    trigger:
+        send "&7---------------------------"
+        send formatted "<link:%{dlink}%><tooltip:&9CLICK ME!!>&9Click the link to join discord."
+        send "&7---------------------------"
+
+#   -----------------------------------------------------   #
+#
+#   A SIMPLE IN GAME COMMAND TO CHANGE THE LINK IF IT EXPIRES
+#
+#   -----------------------------------------------------   #
+
+command setlink <text>:
+    permission: discord.admin
+    trigger:
+        send "&aDiscord link was set succesfully."
+        set {dlink} to arg-1
+        send "&3New link: %{dlink}%"
