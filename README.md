@@ -1,2 +1,3 @@
-# Skript-Examples
-These are your nice and simple example skripts available for free.
+ALL THESE SKRIPTS ARE EXAMPLES AND WORK AS OF DAY OF PUBLISHING THEM.
+
+USE ONLY A FEW NEWER ADDONS WHICH ARE MENTIONED IN THE SKRIPTS THEMSELVES.
