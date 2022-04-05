@@ -1,0 +1,78 @@
+#   ---------------------------------------------------------------------   #
+#
+#   THIS IS A SMALL TUTORIAL SKRIPT FOR YOU TO LEARN VANILLA GUIS
+#
+#   ---------------------------------------------------------------------   #
+
+#   ---------------------------------------------------------------------   #
+#
+#   THIS EXAMPLE USES METADATA TAGS
+#
+#   ---------------------------------------------------------------------   #
+
+#   ---------------------------------------------------------------------   #
+#
+#   ALSO WILL PROVIDE A FUNCTION TO QUICKLY SET A GUI, HELPFUL LITTLE THING
+#
+#   ---------------------------------------------------------------------   #
+
+#   ---------------------------------------------------------------------   #
+#
+#   CREATING AND OPENING THE GUI 
+#
+#   ---------------------------------------------------------------------   #
+
+command gui:
+    trigger:
+        set metadata tag "gui" of player to chest inventory named "MY GUI" with 3 rows
+#       YOU CAN HAVE A MAX OF 6 ROWS, THE TAG IS SPECIFIC TO THE PLAYER NAME CAN HAVE COLOUR CODES TOO
+        set slot (integers between 0 and 26) of metadata tag "gui" of player to gray stained glass pane named "&7"
+#       THIS IS GONNA SET ALL THE SLOTS OF GUI WITH GLASS PANES THAT HAVE NO NAME
+#       THEN YOU CAN ADD ITEMS BY OVERRIDING WITH SUBSEQUENT LINES
+        set slot 13 of metadata tag "gui" of player to stone named "&7STONE GIVER" with lore "&8GIVES STONE"
+#       THIS IS GONNA SET THE MIDDLE SLOT TO A STONE WITH THAT NAME AND LORE
+        open (metadata tag "gui" of player) to player
+#       THIS IS HOW THE GUI WILL BE SHOWN TO THE PLAYER, DONT FORGET IT
+
+#   ---------------------------------------------------------------------   #
+#
+#   GIVING THE GUI FUNCTIONS TO DO
+#   
+#   ---------------------------------------------------------------------   #
+
+on inventory click:
+    if event-inventory = (metadata tag "gui" of player):
+#   CHECKING THE INVENTORY TO CONFIRM ITS OUR OWN
+        if index of event-slot = 13:
+#   CHECKING IF THE SLOT CLICKED IS OUR SET SLOT AKA THE STONE
+            give player 16 of stone
+#   GIVING THE STONE
+            close player's inventory
+#   CLOSING INVENTORY, DOESNT HAPPEN AUTOMATICALLY
+
+#   ---------------------------------------------------------------------   #
+#
+#   THE FUNCTION AS PROMISED
+#
+#   ---------------------------------------------------------------------   #
+
+function gui(p: player, tag: string, name: string, rows: integer, frame: item):
+    set metadata tag "%{_tag}%" of {_p} to chest inventory named "%{_name}%" with {_rows} rows
+    set {_s} to {_rows} * 9
+    set slot (integers between 0 and {_s}) of metadata tag "%{_tag}%" of {_p} to {_frame}
+
+#   ---------------------------------------------------------------------   #
+#
+#   THIS FUNCTION DOESNT OPEN THE GUI SO YOU HAVE TO DO THAT
+#   EXAMPLE CALL BELOW
+#
+#   ---------------------------------------------------------------------   #
+
+command fungui:
+    trigger:
+        gui(player, "up", "&9ULTIMATE GUI", 3, gray stained glass pane named "&7")
+#       SETS THE BASIC GUI
+        set slot 13 of metadata tag "up" of player to iron block named "&7Ron"
+#       SETTING A BASIC ITEM FOR EXAMPLE, MAKE SURE YOU USE THE CORRECT TAG
+        open (metadata tag "up" of player) to player
+#       OPENING THE GUI, IMPORTANT
