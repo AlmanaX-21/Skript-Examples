@@ -1,0 +1,25 @@
+#   -----------------------------------------------------   #
+#
+#   A SIMPLE SCOREBOARD USING SKBEE ADDON
+#
+#   -----------------------------------------------------   #
+
+#   -----------------------------------------------------   #
+#
+#   player's balance requires vault
+#   player's prefix require luckperms
+#
+#   -----------------------------------------------------   #
+
+
+
+on join:
+    while player is online:
+        set title of player's scoreboard to "&bAlmanaX21's scoreboard"
+        set line 6 of player's scoreboard to "&7----------"
+        set line 5 of player's scoreboard to "&3RANK: %player's prefix%"
+        set line 4 of player's scoreboard to "&3BALANCE: &b%player's balance%"
+        set line 3 of player's scoreboard to "&7----------"
+        set line 2 of player's scoreboard to "&3ONLINE PLAYERS: &b%size of online players%"
+        set line 1 of player's scoreboard to "&3Almana is the greatest."
+        wait 1 second
