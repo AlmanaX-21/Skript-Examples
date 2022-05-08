@@ -42,7 +42,8 @@ command gui:
 
 on inventory click:
     if event-inventory = (metadata tag "gui" of player):
-#   CHECKING THE INVENTORY TO CONFIRM ITS OUR OWN
+        cancel event
+#   CHECKING THE INVENTORY TO CONFIRM ITS OUR OWN, AND CANCELLING EVENT
         if index of event-slot = 13:
 #   CHECKING IF THE SLOT CLICKED IS OUR SET SLOT AKA THE STONE
             give player 16 of stone
